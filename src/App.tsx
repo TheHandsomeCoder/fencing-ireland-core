@@ -6,14 +6,13 @@ import './App.css';
 const styles = (theme: Theme) => createStyles({
   paper: {
     'margin': '0 auto',
-    'max-width': '550px',
+    'max-width': '640px',
     'padding': '48px 48px 32px',
     'position': 'relative',
     'top': '100px',
   },
   textField:{
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
+   'width': '100%'
   }
 });
 
@@ -31,8 +30,14 @@ class App extends React.Component<Props> {
             id="email"
             label="Email"
             className={classes.textField}
-            value=''
             margin="normal"
+          />
+          <TextField
+            id="password"
+            label="Password"
+            className={classes.textField}
+            margin="normal"
+            type="password"
           />
         </Paper>
 
