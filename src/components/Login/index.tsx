@@ -1,12 +1,26 @@
-import { Button, Grid, Paper, TextField, Theme, Typography, WithStyles } from "@material-ui/core";
+import { Button, Grid, Paper, TextField, Theme, Typography, WithStyles, withWidth } from "@material-ui/core";
 import createStyles from "@material-ui/core/styles/createStyles";
 import withStyles from "@material-ui/core/styles/withStyles";
+import { WithWidthProps } from "@material-ui/core/withWidth";
 import * as React from "react";
+import compose from 'recompose/compose';
 
 const styles = (theme: Theme) => createStyles({
     buttonContainer: {
         flexGrow: 1,
-        'margin-top': '48px'
+        'margin-top': '32px'
+    },
+    forgotPasswordContainer: {
+        [theme.breakpoints.down("xs")]: {
+            'justify-content': 'center',
+            order:2,
+            'padding-top': '8px'
+        }
+    },
+    loginButton: {
+        [theme.breakpoints.down("xs")]: {
+            width: '100%'
+        }
     },
     loginButtonContainer: {
         [theme.breakpoints.down("xs")]: {
@@ -36,11 +50,13 @@ const styles = (theme: Theme) => createStyles({
     },
 });
 
-interface Props extends WithStyles<typeof styles> { }
+interface Props extends WithStyles<typeof styles>, WithWidthProps { }
 
 class Login extends React.Component<Props> {
     public render() {
+
         const { classes } = this.props;
+
         return (
             <Paper elevation={14} className={classes.paper} >
                 <Typography variant="display1" gutterBottom={true} align="center" >
@@ -49,11 +65,11 @@ class Login extends React.Component<Props> {
                 <TextField id="email" label="Email" className={classes.textField} margin="normal" />
                 <TextField id="password" label="Password" className={classes.textField} margin="normal" type="password" />
                 <Grid container={true} justify="space-between" className={classes.buttonContainer} >
-                    <Grid item={true} xs={12} className={classes.loginButtonContainer}>
-                        <Button variant="flat" > Forgot Password </Button>
+                    <Grid container={true} item={true} xs={12} sm={6} className={classes.forgotPasswordContainer}>
+                        <Button variant="flat"> Forgot Password </Button>
                     </Grid >
-                    <Grid item={true} xs={12}>
-                        <Button variant="contained" color="primary" > Login </Button>
+                    <Grid container={true} item={true} xs={12} sm={6} justify="flex-end" className={classes.loginButtonContainer}>
+                        <Button variant="contained" color="primary" className={classes.loginButton}> Login </Button>
                     </Grid >
                 </Grid>
             </Paper>
@@ -61,4 +77,7 @@ class Login extends React.Component<Props> {
     };
 }
 
-export default withStyles(styles)(Login);
+export default compose(
+    withStyles(styles),
+    withWidth()
+  )(Login);
