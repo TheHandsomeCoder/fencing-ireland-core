@@ -3,7 +3,7 @@ import createStyles from "@material-ui/core/styles/createStyles";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { WithWidthProps } from "@material-ui/core/withWidth";
 import * as React from "react";
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import compose from 'recompose/compose';
 import firebase, { googleAuthProvider } from '../../helpers/firebase';
 
@@ -57,15 +57,22 @@ const styles = (theme: Theme) => createStyles({
     },
 });
 
-interface Props extends WithStyles<typeof styles>, WithWidthProps { }
+interface Props extends WithStyles<typeof styles>, WithWidthProps { 
+    isAuthenticated: boolean;
+}
 
-class Login extends React.Component<Props> {
+class Login extends React.Component<Props, {isAuthenticated: boolean}> {
 
     constructor(props: Props) {
         super(props)
+        this.state = { isAuthenticated: this.props.isAuthenticated };
     }
 
     public render() {
+
+        if (this.state.isAuthenticated) {
+            return <Redirect to="/checkout" />;
+        }
 
         const { classes } = this.props;
 
