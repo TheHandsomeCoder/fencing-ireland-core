@@ -1,10 +1,11 @@
-import { createStyles, Switch, Theme, WithStyles, withStyles } from '@material-ui/core';
+import { createStyles, Theme, WithStyles, withStyles } from '@material-ui/core';
 import CSSBaseline from '@material-ui/core/CssBaseline';
 import * as React from 'react';
 import {
   BrowserRouter as Router,
   Redirect,
-  Route
+  Route,
+  Switch
 } from 'react-router-dom';
 import './App.css';
 import Checkout from './components/Checkout';
