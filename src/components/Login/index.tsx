@@ -80,7 +80,7 @@ class Login extends React.Component<Props> {
                 </Grid>
                 <div className={classes.spacer}/>
                 <Grid container={true} justify="center">
-                    <Grid item={true} justify="center">
+                    <Grid item={true} >
                         <span>
                             <span><Typography>
                                 Don't have and account? <Link to="/signup">Sign Up</Link>
