@@ -3,29 +3,29 @@ import createStyles from "@material-ui/core/styles/createStyles";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { WithWidthProps } from "@material-ui/core/withWidth";
 import * as React from "react";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 import compose from 'recompose/compose';
 
 const styles = (theme: Theme) => createStyles({
     buttonContainer: {
         flexGrow: 1,
-        'margin-top': '32px'
+        'margin-top': '16px'
     },
     forgotPasswordContainer: {
         [theme.breakpoints.down("xs")]: {
             'justify-content': 'center',
-            order:2,
+            order: 2,
             'padding-top': '8px'
         }
     },
-    loginButton: {
+    signUpButton: {
         [theme.breakpoints.down("xs")]: {
             width: '100%'
         }
     },
-    loginButtonContainer: {
+    signUpButtonContainer: {
         [theme.breakpoints.down("xs")]: {
-            order:1
+            order: 1
         }
     },
     paper: {
@@ -43,8 +43,8 @@ const styles = (theme: Theme) => createStyles({
             'top': 0,
         }
     },
-    spacer:{
-        marginTop: "16px",
+    spacer: {
+        marginTop: "32px",
         marginBottom: "16px",
         borderBottom: "1px solid rgb(219, 219, 219)"
     },
@@ -58,7 +58,7 @@ const styles = (theme: Theme) => createStyles({
 
 interface Props extends WithStyles<typeof styles>, WithWidthProps { }
 
-class Login extends React.Component<Props> {
+class SignUp extends React.Component<Props> {
     public render() {
 
         const { classes } = this.props;
@@ -68,22 +68,21 @@ class Login extends React.Component<Props> {
                 <Typography variant="display1" gutterBottom={true} align="center" >
                     Hack Day Membership
             </Typography>
-                <TextField id="email" label="Email" className={classes.textField} margin="normal" />
+                <TextField id="email" label="Email" className={classes.textField} margin="normal" type="email" />
+                <TextField id="fistName" label="First Name" className={classes.textField} margin="normal" />
+                <TextField id="lastName" label="Last Name" className={classes.textField} margin="normal" />
                 <TextField id="password" label="Password" className={classes.textField} margin="normal" type="password" />
-                <Grid container={true} justify="space-between" className={classes.buttonContainer} >
-                    <Grid container={true} item={true} xs={12} sm={6} className={classes.forgotPasswordContainer}>
-                        <Button variant="flat"> Forgot Password </Button>
-                    </Grid >
-                    <Grid container={true} item={true} xs={12} sm={6} justify="flex-end" className={classes.loginButtonContainer}>
-                        <Button variant="contained" color="primary" size="large" className={classes.loginButton}> Login </Button>
+                <Grid container={true} justify="center" className={classes.buttonContainer} >
+                    <Grid container={true} item={true} xs={12} sm={6} justify="center" className={classes.signUpButtonContainer}>
+                        <Button variant="contained" color="primary" size="large" className={classes.signUpButton}> SignUp </Button>
                     </Grid >
                 </Grid>
-                <div className={classes.spacer}/>
+                <div className={classes.spacer} />
                 <Grid container={true} justify="center">
                     <Grid item={true} justify="center">
                         <span>
                             <span><Typography>
-                                Don't have and account? <Link to="/signup">Sign Up</Link>
+                                Already have an account? <Link to="/login">Login</Link>
                             </Typography></span>
 
                         </span>
@@ -96,4 +95,4 @@ class Login extends React.Component<Props> {
 
 export default compose(
     withStyles(styles)
-  )(Login);
+)(SignUp);
