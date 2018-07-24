@@ -67,7 +67,7 @@ class SignUp extends React.Component<Props> {
             <Paper elevation={14} className={classes.paper} >
                 <Typography variant="display1" gutterBottom={true} align="center" >
                     Hack Day Membership
-            </Typography>
+                </Typography>
                 <TextField id="email" label="Email" className={classes.textField} margin="normal" type="email" />
                 <TextField id="fistName" label="First Name" className={classes.textField} margin="normal" />
                 <TextField id="lastName" label="Last Name" className={classes.textField} margin="normal" />
@@ -81,10 +81,9 @@ class SignUp extends React.Component<Props> {
                 <Grid container={true} justify="center">
                     <Grid item={true} >
                         <span>
-                            <span><Typography>
+                            <Typography>
                                 Already have an account? <Link to="/login">Login</Link>
-                            </Typography></span>
-
+                            </Typography>
                         </span>
                     </Grid>
                 </Grid>
