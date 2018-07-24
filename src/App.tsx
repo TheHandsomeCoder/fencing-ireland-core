@@ -1,4 +1,4 @@
-import { createStyles, Theme, WithStyles, withStyles } from '@material-ui/core';
+import { createStyles, Switch, Theme, WithStyles, withStyles } from '@material-ui/core';
 import CSSBaseline from '@material-ui/core/CssBaseline';
 import * as React from 'react';
 import {
@@ -26,12 +26,12 @@ class App extends React.Component<Props> {
       <div className={classes.wrapper}>
         <CSSBaseline />
         <Router>
-          <div>
-            <Redirect to='/login' from='/login' />
+          <Switch>
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
             <Route path="/checkout" component={Checkout} />
-          </div>
+            <Redirect exact={true} to='/login' />
+          </Switch>
         </Router>
       </div>
     );
