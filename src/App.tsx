@@ -3,6 +3,7 @@ import CSSBaseline from '@material-ui/core/CssBaseline';
 import * as React from 'react';
 import {
   BrowserRouter as Router,
+  Redirect,
   Route
 } from 'react-router-dom';
 import './App.css';
@@ -25,7 +26,8 @@ class App extends React.Component<Props> {
       <div className={classes.wrapper}>
         <CSSBaseline />
         <Router>
-          <div className={classes.wrapper}>
+          <div>
+            <Redirect to='/login' from='/login' />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
             <Route path="/checkout" component={Checkout} />
