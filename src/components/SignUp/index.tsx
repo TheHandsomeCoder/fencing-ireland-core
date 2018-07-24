@@ -3,6 +3,7 @@ import createStyles from "@material-ui/core/styles/createStyles";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { WithWidthProps } from "@material-ui/core/withWidth";
 import * as React from "react";
+import { Link } from "react-router-dom";
 import compose from 'recompose/compose';
 
 const styles = (theme: Theme) => createStyles({
@@ -65,7 +66,7 @@ class SignUp extends React.Component<Props> {
         return (
             <Paper elevation={14} className={classes.paper} >
                 <Typography variant="display1" gutterBottom={true} align="center" >
-                    Fencing Ireland Membership
+                    Hack Day Membership
             </Typography>
                 <TextField id="email" label="Email" className={classes.textField} margin="normal" type="email" />
                 <TextField id="fistName" label="First Name" className={classes.textField} margin="normal" />
@@ -81,7 +82,7 @@ class SignUp extends React.Component<Props> {
                     <Grid item={true} justify="center">
                         <span>
                             <span><Typography>
-                                Already have an account? <a href="#">Log in</a>
+                                Already have an account? <Link to="/login">Login</Link>
                             </Typography></span>
 
                         </span>
