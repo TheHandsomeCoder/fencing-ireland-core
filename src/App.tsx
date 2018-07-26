@@ -22,7 +22,6 @@ class App extends React.Component<Props> {
         <CssBaseline />
         <Router>
           <Switch>
-            <Route path='/' component={Login} />
             <Route path='/login' component={Login} />
             <Route path='/signip' component={SignUp} />
             <Route path='/hello' component={Hello} />
