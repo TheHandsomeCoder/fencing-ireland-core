@@ -1,5 +1,4 @@
-import { createStyles, Theme, WithStyles, withStyles } from '@material-ui/core';
-import CSSBaseline from '@material-ui/core/CssBaseline';
+import { createStyles, CssBaseline, Theme, WithStyles, withStyles } from '@material-ui/core';
 import * as React from 'react';
 import './App.css';
 import SignUp from './components/SignUp';
@@ -17,7 +16,7 @@ class App extends React.Component<Props> {
     const { classes } = this.props;
     return (
       <div className={classes.wrapper}>
-        <CSSBaseline />
+        <CssBaseline />
         <SignUp/>
       </div>
     );
