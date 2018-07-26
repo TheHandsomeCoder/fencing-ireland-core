@@ -1,7 +1,10 @@
 import { createStyles, CssBaseline, Theme, WithStyles, withStyles } from '@material-ui/core';
 import * as React from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
+import Login from './components/Login';
 import SignUp from './components/SignUp';
+import Hello from './containers/Hello'
 
 const styles = (theme: Theme) => createStyles({
   wrapper: {
@@ -17,7 +20,14 @@ class App extends React.Component<Props> {
     return (
       <div className={classes.wrapper}>
         <CssBaseline />
-        <SignUp/>
+        <Router>
+          <Switch>
+            <Route path='/' component={Login} />
+            <Route path='/login' component={Login} />
+            <Route path='/signip' component={SignUp} />
+            <Route path='/hello' component={Hello} />
+          </Switch>
+        </Router>
       </div>
     );
   }
