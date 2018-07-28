@@ -8,7 +8,11 @@ export interface DecrementEnthusiasm {
     type: constants.DECREMENT_ENTHUSIASM;
 }
 
-export type EnthusiasmAction = IncrementEnthusiasm | DecrementEnthusiasm;
+export interface LoginWithGoogle {
+    type: constants.LOGIN_WITH_GOOGLE;
+}
+
+export type EnthusiasmAction = IncrementEnthusiasm | DecrementEnthusiasm
 
 export function incrementEnthusiasm(): IncrementEnthusiasm {
     return {
@@ -19,5 +23,11 @@ export function incrementEnthusiasm(): IncrementEnthusiasm {
 export function decrementEnthusiasm(): DecrementEnthusiasm {
     return {
         type: constants.DECREMENT_ENTHUSIASM
+    }
+}
+
+export function LoginWithGoogle(): LoginWithGoogle {
+    return {
+        type: constants.LOGIN_WITH_GOOGLE
     }
 }

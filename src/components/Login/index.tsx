@@ -5,7 +5,7 @@ import { WithWidthProps } from "@material-ui/core/withWidth";
 import * as React from "react";
 import { Link, Redirect } from 'react-router-dom';
 import compose from 'recompose/compose';
-import firebase, { googleAuthProvider } from '../../helpers/firebase';
+// import firebase, { googleAuthProvider } from '../../helpers/firebase';
 
 const styles = (theme: Theme) => createStyles({
     buttonContainer: {
@@ -57,20 +57,20 @@ const styles = (theme: Theme) => createStyles({
     },
 });
 
-interface Props extends WithStyles<typeof styles>, WithWidthProps { 
-    isAuthenticated: boolean;
+interface Props extends WithStyles<typeof styles>, WithWidthProps {
+    isLoggedIn: boolean;
+    login: () => void;
 }
 
-class Login extends React.Component<Props, {isAuthenticated: boolean}> {
+class Login extends React.Component<Props> {
 
     constructor(props: Props) {
         super(props)
-        this.state = { isAuthenticated: this.props.isAuthenticated };
     }
 
     public render() {
 
-        if (this.state.isAuthenticated) {
+        if (this.props.isLoggedIn) {
             return <Redirect to="/checkout" />;
         }
 
@@ -88,7 +88,7 @@ class Login extends React.Component<Props, {isAuthenticated: boolean}> {
                         <Button variant="flat"> Forgot Password </Button>
                     </Grid >
                     <Grid container={true} item={true} xs={12} sm={6} justify="flex-end" className={classes.loginButtonContainer}>
-                        <Button onClick={this.signInWithGoogle} variant="contained" color="primary" size="large" className={classes.loginButton}> Login </Button>
+                        <Button onClick={this.props.login} variant="contained" color="primary" size="large" className={classes.loginButton}> Login </Button>
                     </Grid >
                 </Grid>
                 <div className={classes.spacer} />
@@ -104,23 +104,6 @@ class Login extends React.Component<Props, {isAuthenticated: boolean}> {
             </Paper>
         )
     };
-
-    protected signInWithGoogle() {
-        firebase.auth().signInWithPopup(googleAuthProvider).then((result) => {
-            console.log(result);
-        }).catch((error: any) => {
-            // Handle Errors here.
-            // const errorCode = error.code;
-            // const errorMessage = error.message;
-            // // The email of the user's account used.
-            // const email = error.email;
-            // // The firebase.auth.AuthCredential type that was used.
-            // const credential = error.credential;
-            console.error(error);
-
-
-        });
-    }
 }
 
 export default compose(
