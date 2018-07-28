@@ -15,7 +15,13 @@ import { StoreState } from '../types';
 //     return state;
 // }
 
-export function loginWithGoogle(state: StoreState = { isLoggedIn: false }, action: LoginWithGoogle): StoreState {
+// https://github.com/sotojuan/saga-login-flow
+
+// https://github.com/erikras/ducks-modular-redux
+// https://github.com/supnate/rekit
+// https://github.com/evgenyrodionov/redux-logger
+
+export function loginWithGoogle(/*? state.loginWithGoogle */state: StoreState = { isLoggedIn: false }, action: LoginWithGoogle): StoreState {
     switch (action.type) {
         case LOGIN_WITH_GOOGLE:
             return { ...state, isLoggedIn: true }
@@ -23,5 +29,5 @@ export function loginWithGoogle(state: StoreState = { isLoggedIn: false }, actio
     return state;
 }
 
-const rootReducer = combineReducers({ loginWithGoogle })
+const rootReducer = combineReducers({ FEATURE, loginWithGoogle })
 export default rootReducer;
