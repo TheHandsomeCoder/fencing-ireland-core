@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import App from '../components/App';
-import { StoreState } from '../types';
 
 // This takes in the redux store and returns the data the component needs
-export function mapStateToProps(store: StoreState) {
+export function mapStateToProps(store: any) {
     return {
-       isLoggedIn: store.isLoggedIn
+       isLoggedIn: store.authentication.isLoggedIn
     }
 }
 
