@@ -2,9 +2,10 @@ import { Button, Grid, Paper, TextField, Theme, Typography, WithStyles } from "@
 import createStyles from "@material-ui/core/styles/createStyles";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { WithWidthProps } from "@material-ui/core/withWidth";
-import * as React from "react";
+import React from "react";
 import compose from 'recompose/compose';
 
+//#region Styles
 const styles = (theme: Theme) => createStyles({
     buttonContainer: {
         flexGrow: 1,
@@ -47,8 +48,9 @@ const styles = (theme: Theme) => createStyles({
         height: '100%'
     },
 });
+//#endregion
 
-interface Props extends WithStyles<typeof styles>, WithWidthProps { }
+interface Props extends WithStyles<typeof styles>, WithWidthProps {}
 
 class Checkout extends React.Component<Props> {
     public render() {
@@ -73,6 +75,4 @@ class Checkout extends React.Component<Props> {
     };
 }
 
-export default compose(
-    withStyles(styles)
-)(Checkout);
+export default compose(withStyles(styles))(Checkout);
