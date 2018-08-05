@@ -3,12 +3,12 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './containers/App';
 import './index.css';
+import store, { history } from './redux/store';
 import registerServiceWorker from './registerServiceWorker';
-import store from './store';
 
 ReactDOM.render(
   <Provider store={store}>
-    <App/>
+    <App history={history}/>
   </Provider>,
   document.getElementById('root') as HTMLElement
 );
