@@ -1,4 +1,4 @@
-import { createStyles, CssBaseline, Theme, WithStyles, withStyles } from '@material-ui/core';
+import { createStyles, CssBaseline, WithStyles, withStyles } from '@material-ui/core';
 import { ConnectedRouter } from 'connected-react-router';
 import { History } from 'history'
 import * as React from 'react';
@@ -8,7 +8,7 @@ import Checkout from './Checkout';
 import PrivateRoute from './PrivateRoute';
 import SignUp from './SignUp';
 
-const styles = (theme: Theme) => createStyles({
+const styles = () => createStyles({
   wrapper: {
     height: '100%'
   },
