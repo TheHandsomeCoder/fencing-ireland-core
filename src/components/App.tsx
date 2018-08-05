@@ -2,7 +2,7 @@ import { createStyles, CssBaseline, Theme, WithStyles, withStyles } from '@mater
 import { ConnectedRouter } from 'connected-react-router';
 import { History } from 'history'
 import * as React from 'react';
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import Login from '../containers/Login';
 import Checkout from './Checkout';
 import PrivateRoute from './PrivateRoute';
@@ -30,9 +30,10 @@ class App extends React.Component<Props> {
         <CssBaseline />
         <ConnectedRouter history={this.props.history}>
           <Switch>
-            <Route path='/login' component={Login} />
-            <Route path='/signip' component={SignUp} />
-            <PrivateRoute path='/checkout' component={Checkout} isLoggedIn={this.props.isLoggedIn} />
+          <Route path='/login' component={Login} />
+          <Route path='/signip' component={SignUp} />
+          <PrivateRoute path='/checkout' component={Checkout} isLoggedIn={this.props.isLoggedIn} />
+          <Redirect to='/login' />
           </Switch>
         </ConnectedRouter>
       </div>
