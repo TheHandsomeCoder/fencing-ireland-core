@@ -1,9 +1,8 @@
 import { createStyles, CssBaseline, WithStyles, withStyles } from '@material-ui/core';
-import { ConnectedRouter } from 'connected-react-router';
-import { History } from 'history'
 import * as React from 'react';
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Redirect, Route, Router, Switch} from "react-router-dom";
 import Login from '../containers/Login';
+import {history} from '../redux/store';
 import Checkout from './Checkout';
 import PrivateRoute from './PrivateRoute';
 import SignUp from './SignUp';
@@ -16,7 +15,6 @@ const styles = () => createStyles({
 
 interface Props extends WithStyles<typeof styles> {
   isLoggedIn: boolean;
-  history: History;
 }
 
 class App extends React.Component<Props> {
@@ -28,14 +26,14 @@ class App extends React.Component<Props> {
     return (
       <div className={classes.wrapper}>
         <CssBaseline />
-        <ConnectedRouter history={this.props.history}>
+        <Router history={history}>
           <Switch>
           <Route path='/login' component={Login} />
-          <Route path='/signip' component={SignUp} />
+          <Route path='/signup' component={SignUp} />
           <PrivateRoute path='/checkout' component={Checkout} isLoggedIn={this.props.isLoggedIn} />
           <Redirect to='/login' />
           </Switch>
-        </ConnectedRouter>
+        </Router>
       </div>
     );
   }
