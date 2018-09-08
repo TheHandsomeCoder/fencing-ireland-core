@@ -72,7 +72,7 @@ class Checkout extends React.Component<Props> {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="title" color="inherit" className={classes.flex}>
-                            News
+                            Membership
                         </Typography>
                         <Button onClick={this.props.logout} color="inherit">Logout</Button>
                     </Toolbar>
