@@ -1,9 +1,9 @@
 import { createStyles, CssBaseline, WithStyles, withStyles } from '@material-ui/core';
 import * as React from 'react';
 import { Redirect, Route, Router, Switch} from "react-router-dom";
+import Checkout from '../containers/Checkout';
 import Login from '../containers/Login';
 import {history} from '../redux/store';
-import Checkout from './Checkout';
 import PrivateRoute from './PrivateRoute';
 import SignUp from './SignUp';
 
