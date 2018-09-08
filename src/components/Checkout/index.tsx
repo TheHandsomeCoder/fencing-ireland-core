@@ -1,7 +1,8 @@
-import { Button, Grid, Paper, TextField, Theme, Typography, WithStyles } from "@material-ui/core";
+import { AppBar, Button, Grid, IconButton, Paper, TextField, Theme, Toolbar, Typography, WithStyles } from "@material-ui/core";
 import createStyles from "@material-ui/core/styles/createStyles";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { WithWidthProps } from "@material-ui/core/withWidth";
+import MenuIcon from '@material-ui/icons/Menu';
 import React from "react";
 import compose from 'recompose/compose';
 
@@ -44,13 +45,19 @@ const styles = (theme: Theme) => createStyles({
     textField: {
         'width': '100%'
     },
+    flex: {
+        flexGrow: 1,
+    },
     wrapper: {
         height: '100%'
     },
+
 });
 //#endregion
 
-interface Props extends WithStyles<typeof styles>, WithWidthProps {}
+interface Props extends WithStyles<typeof styles>, WithWidthProps { 
+    logout: () => void;
+}
 
 class Checkout extends React.Component<Props> {
     public render() {
@@ -58,19 +65,34 @@ class Checkout extends React.Component<Props> {
         const { classes } = this.props;
 
         return (
-            <Paper elevation={14} className={classes.paper} >
-                <Typography variant="display1" gutterBottom={true} align="center" >
-                    Checkout
-            </Typography>
-                <TextField id="fistName" label="First Name" className={classes.textField} margin="normal" />
-                <TextField id="lastName" label="Last Name" className={classes.textField} margin="normal" />
-                <TextField id="company" label="Company" className={classes.textField} margin="normal" />
-                <Grid container={true} justify="center" className={classes.buttonContainer} >
-                    <Grid container={true} item={true} xs={12} sm={6} justify="center" className={classes.checkoutButtonContainer}>
-                        <Button variant="contained" color="primary" size="large" className={classes.checkoutButton}> Checkout with Stripe </Button>
-                    </Grid >
-                </Grid>
-            </Paper>
+            <div>
+                <AppBar position="static">
+                    <Toolbar>
+                        <IconButton color="inherit" aria-label="Menu">
+                            <MenuIcon />
+                        </IconButton>
+                        <Typography variant="title" color="inherit" className={classes.flex}>
+                            News
+                        </Typography>
+                        <Button onClick={this.props.logout} color="inherit">Logout</Button>
+                    </Toolbar>
+                </AppBar>
+                <div>
+                    <Paper elevation={14} className={classes.paper} >
+                        <Typography variant="display1" gutterBottom={true} align="center" >
+                            Checkout
+                    </Typography>
+                        <TextField id="fistName" label="First Name" className={classes.textField} margin="normal" />
+                        <TextField id="lastName" label="Last Name" className={classes.textField} margin="normal" />
+                        <TextField id="company" label="Company" className={classes.textField} margin="normal" />
+                        <Grid container={true} justify="center" className={classes.buttonContainer} >
+                            <Grid container={true} item={true} xs={12} sm={6} justify="center" className={classes.checkoutButtonContainer}>
+                                <Button variant="contained" color="primary" size="large" className={classes.checkoutButton}> Checkout with Stripe </Button>
+                            </Grid >
+                        </Grid>
+                    </Paper>
+                </div>
+            </div>
         )
     };
 }
